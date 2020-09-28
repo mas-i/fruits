@@ -86,6 +86,18 @@
 - has_many :sales offices
 - belongs_to :fruit
 
+## Sales_officesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|variety_id|references|null: false, foreign_key: true|
+|name|string|null: false|
+|explain|text|null: false|
+|image|string|null: false|
+
+### Association
+- belongs_to :variety
+
 ## Fruits_Originsテーブル
 
 |Column|Type|Options|
