@@ -3,6 +3,9 @@
   = render 'devise/shared/flash_messages'
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-group
+      = f.label :nick_name
+      = f.text_field :nick_name, autofocus: true, autocomplete: 'nick_name', class: 'form-control'
+    .form-group
       = f.label :email
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
     .form-group
