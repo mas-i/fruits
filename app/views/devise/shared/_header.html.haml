@@ -1,9 +1,15 @@
 %header
-  %nav.navbar.navbar-expand.navbar-light
+  %nav.navbar.navbar-expand-md.navbar-light
     = link_to "旬のフルーツ調べ太郎", root_path, class: 'navbar-brand'
     #Navber
       %ul.navbar-nav
         - if user_signed_in?
+          %li.nav-item.active
+            = link_to '旬のフルーツ検索', "#", class: 'nav-link'
+            %button.btn.btn-primary{:type => "button"} 旬のフルーツを探す！
+          %li.nav-item.active
+            = link_to 'フルーツを登録する', "#", class: 'nav-link'
+        
           %li.nav-item.active
             = link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link'
           %li.nav-item.active
