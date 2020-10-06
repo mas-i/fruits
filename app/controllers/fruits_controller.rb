@@ -3,6 +3,7 @@ class FruitsController < ApplicationController
   end
 
   def new
+    binding.pry
     @fruit = Fruit.new
   end
 
@@ -14,5 +15,5 @@ class FruitsController < ApplicationController
       render :new
     end
   end
-  
+
 end
