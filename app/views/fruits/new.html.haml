@@ -1,0 +1,16 @@
+%h1 新しいフルーツを登録する
+%form
+  .form-group
+    %label{:for => "exampleInputEmail1"} Email address
+    %input#exampleInputEmail1.form-control{"aria-describedby" => "emailHelp", :placeholder => "Enter email", :type => "email"}/
+    %small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+  .form-group
+    %label{:for => "exampleInputPassword1"} Password
+    %input#exampleInputPassword1.form-control{:placeholder => "Password", :type => "password"}/
+  .form-group.form-check
+    %input#exampleCheck1.form-check-input{:type => "checkbox"}/
+    %label.form-check-label{:for => "exampleCheck1"} Check me out
+  .form-group
+    %label{for: "exampleFormControlFile1"} 画像を選択してください
+    %input#exampleFormControlFile1.form-control-file{type: "file"}
+  %button.btn.btn-primary{type: "submit"} 登録する
