@@ -1,15 +1,30 @@
 %h1 新しいフルーツを登録する
-%form
-  .form-group
-    %label{for: "exampleFormControlFile1"} 画像を選択してください
-    %input#exampleFormControlFile1.form-control-file{type: "file"}
-  .form-group
-    %label フルーツ名
-    %input.form-control{type: "text", placeholder: "りんご", }/
-  .form-group
-    %label フルーツの概要
-    %input.form-control{type: "text", placeholder: "りんごは酸味,甘みがあり、主な産地は青森県などです。"}/
-  .form-group.form-check
-    %input#exampleCheck1.form-check-input{:type => "checkbox"}/
-    %label.form-check-label{:for => "exampleCheck1"} Check me out
-  %button.btn.btn-primary{type: "submit"} 登録する
+= bootstrap_form_with(model:@fruit, local:true) do |f|
+  = f.file_field :image
+  = f.text_field :name, placeholder: "りんご"
+  = f.text_area :explain, placeholder: "りんごは酸味,甘みがあり、主な産地は青森県などです。"
+  = f.fields_for :origin do |o|
+    = o.text_field :prefecture, placeholder: "青森県"
+    = o.text_field :city, placeholder: "青森市"
+  = f.fields_for :season do |s|
+    = s.number_field :month
+  %p 月
+  = f.submit "登録する"
+
+  -# %form
+  -#   .form-group
+  -#     %label{for: "exampleFormControlFile1"} 画像を選択してください
+  -#     %input#exampleFormControlFile1.form-control-file{type: "file"}
+  -#   .form-group
+  -#     %label フルーツ名
+  -#     %input.form-control{type: "text", placeholder: "りんご", }/
+  -#   .form-group
+  -#     %label フルーツの概要
+  -#     %input.form-control{type: "text", placeholder: "りんごは酸味,甘みがあり、主な産地は青森県などです。"}/
+  -#   .form-group
+  -#     %label フルーツの産地
+  -#     %input.form-control{type: "text", placeholder: "青森県"}/
+  -#   .form-group.form-check
+  -#     %input#exampleCheck1.form-check-input{:type => "checkbox"}/
+  -#     %label.form-check-label{:for => "exampleCheck1"} Check me out
+  -#   %button.btn.btn-primary{type: "submit"} 登録する

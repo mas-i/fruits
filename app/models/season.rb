@@ -1,5 +1,7 @@
 class Season < ApplicationRecord
-  has_many :fruits
+  belongs_to :fruit, optional: true
+  mount_uploaders :url, SeasonUploader
 
   validates :month, presence: true
+
 end
