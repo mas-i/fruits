@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_051318) do
+ActiveRecord::Schema.define(version: 2020_10_02_100835) do
+
+  create_table "fruits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.text "explain", null: false
+    t.string "image", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_fruits_on_user_id"
+  end
+
+  create_table "origins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "variety_id", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["variety_id"], name: "index_origins_on_variety_id"
+  end
+
+  create_table "seasons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "variety_id", null: false
+    t.integer "month", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["variety_id"], name: "index_seasons_on_variety_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nick_name", default: "", null: false
@@ -26,4 +53,18 @@ ActiveRecord::Schema.define(version: 2020_09_28_051318) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "varieties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "fruit_id", null: false
+    t.string "name", null: false
+    t.text "explain", null: false
+    t.string "image", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fruit_id"], name: "index_varieties_on_fruit_id"
+  end
+
+  add_foreign_key "fruits", "users"
+  add_foreign_key "origins", "varieties"
+  add_foreign_key "seasons", "varieties"
+  add_foreign_key "varieties", "fruits"
 end
