@@ -1,0 +1,13 @@
+%h1 新しいフルーツを登録する
+- binding.pry
+= bootstrap_form_with(model:@fruit, local:true) do |f|
+  = f.file_field :image
+  = f.text_field :name, placeholder: "りんご"
+  = f.text_area :explain, placeholder: "りんごは酸味,甘みがあり、主な産地は青森県などです。"
+  = f.fields_for :origin do |o|
+    = o.text_field :prefecture, placeholder: "青森県"
+    = o.text_field :city, placeholder: "青森市"
+  = f.fields_for :season do |s|
+    = s.number_field :month
+  %p 月
+  = f.submit "登録する"

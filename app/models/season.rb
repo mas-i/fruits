@@ -1,5 +1,6 @@
 class Season < ApplicationRecord
-  has_many :fruits
+  belongs_to :variety
 
   validates :month, presence: true
+
 end
