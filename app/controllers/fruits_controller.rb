@@ -4,6 +4,8 @@ class FruitsController < ApplicationController
 
   def new
     @fruit = Fruit.new
+    # @fruit.origins.build
+    # @fruit.seasons.build
   end
 
   def create
@@ -29,6 +31,6 @@ class FruitsController < ApplicationController
 
   private
   def fruit_params
-    params.require(:fruit).permit(:name, :explain, :image, origins_attributes: [:id, :prefecture, :city],seasons_attributes: [:id, :month].merge(user_id: current_user.id)
+    params.require(:fruit).permit(:name, :explain, :image, origins_attributes: [:id, :prefecture, :city],seasons_attributes: [:id, :month]).merge(user_id: current_user.id)
   end
 end
