@@ -1,5 +1,4 @@
 class Fruit < ApplicationRecord
-  binding.pry
   has_many :varieties
   belongs_to :user
 
