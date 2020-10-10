@@ -5,4 +5,6 @@ class Fruit < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :explain, presence: true
   validates :image, presence: true
+
+  mount_uploader :image, ImageUploader
 end
