@@ -1,0 +1,16 @@
+= search_form_for @search, url: search_fruits_path do |f|
+  = f.label :name, "県名又は市名"
+  = f.text_field :origins_prefecture_or_origins_city_cont
+  = f.number_field :seasons_month_cont
+  = f.submit "検索"
+
+.card-deck
+  - @fruits.each do |fruit|
+    .card
+      %svg.bd-placeholder-img.card-img-top
+        = fruit.image
+      .card-body
+        %h5.card-title
+          = fruit.variety
+        %p.card-text
+          = fruit.explain

@@ -8,7 +8,7 @@
       %ul.navbar-nav.mr-auto.mt-2.mt-lg-0
         - if user_signed_in?
           %li.nav-item.active
-            = link_to '旬のフルーツ検索', "#", class: 'nav-link'
+            = link_to '旬のフルーツ検索', search_fruits_path, class: 'nav-link'
             -# %button.btn.btn-primary{:type => "button"} 旬のフルーツを探す！
           %li.nav-item.active
             = link_to 'フルーツを登録する', new_fruit_path, class: 'nav-link'

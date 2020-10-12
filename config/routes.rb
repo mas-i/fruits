@@ -3,5 +3,9 @@ Rails.application.routes.draw do
 
   root "fruits#index"
 
-  resources :fruits
+  resources :fruits do
+    collection do
+      get 'search'
+    end
+  end
 end

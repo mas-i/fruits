@@ -32,6 +32,11 @@ class FruitsController < ApplicationController
   def destroy
   end
 
+  def search
+    @search = Fruit.ransack(params[:q])
+    @fruits = @search.result(distinct: true)
+  end
+
   private
   def fruit_params
     params.require(:fruit).permit(:name, :variety, :explain, :image, origins_attributes: [:prefecture, :city, :_destroy, :id], seasons_attributes: [:month, :_destroy, :id]).merge(user_id: current_user.id)
