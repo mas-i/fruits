@@ -1,10 +1,13 @@
 class FruitsController < ApplicationController
+
   def index
     @fruits = Fruit.all
   end
 
   def new
     @fruit = Fruit.new
+    @origin = @fruit.origins.new
+    @season = @fruit.seasons.new
   end
 
   def create
@@ -12,7 +15,7 @@ class FruitsController < ApplicationController
     if @fruit.save
       redirect_to root_path, notice: 'フルーツを登録しました'
     else
-      render :new
+      render :new, notice: '登録できませんでした'
     end
   end
 
@@ -23,6 +26,7 @@ class FruitsController < ApplicationController
   end
 
   def show
+    @fruits = Fruit.all
   end
 
   def destroy
@@ -30,6 +34,6 @@ class FruitsController < ApplicationController
 
   private
   def fruit_params
-    params.require(:fruit).permit(:name, :explain, :image).merge(user_id: current_user.id)
+    params.require(:fruit).permit(:name, :variety, :explain, :image, origins_attributes: [:prefecture, :city, :_destroy, :id], seasons_attributes: [:month, :_destroy, :id]).merge(user_id: current_user.id)
   end
 end
