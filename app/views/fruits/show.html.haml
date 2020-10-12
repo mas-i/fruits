@@ -1,4 +1,4 @@
-= render 'devise/shared/flash_messages'
+%h1 テスト
 
 .card-deck
   - @fruits.each do |fruit|
@@ -7,7 +7,6 @@
         = fruit.image
       .card-body
         %h5.card-title
-          = fruit.name
+          = fruit.variety
         %p.card-text
           = fruit.explain
-        %a.btn.btn-primary{href: fruit_path(fruit)} 品種一覧を見る
