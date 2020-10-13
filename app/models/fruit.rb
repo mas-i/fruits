@@ -5,7 +5,7 @@ class Fruit < ApplicationRecord
   accepts_nested_attributes_for :seasons, allow_destroy: true
   belongs_to :user
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :variety, presence: true, uniqueness: true
   validates :explain, presence: true
   validates :image, presence: true

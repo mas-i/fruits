@@ -7,6 +7,10 @@
   = f.fields_for :origins do |origin|
     = origin.text_field :prefecture, placeholder: "青森県"
     = origin.text_field :city, placeholder: "青森市"
-  = f.fields_for :seasons do |season|
-    = season.number_field :month, placeholder: "2"
+    .form-group.mt-2
+      %h5.main-color-bottom-border 旬の月を選択
+      - Season.tags_i18n.map do |k, v|
+        = f.fields_for :seasons do |qt|
+          = qt.label :month, v
+          = qt.check_box(:month,{checked: false}, k ,false)
   = f.submit "登録する"
