@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_100835) do
+ActiveRecord::Schema.define(version: 2020_10_13_134210) do
 
   create_table "fruits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_10_02_100835) do
 
   create_table "seasons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "fruit_id", null: false
-    t.integer "month", null: false
+    t.string "month", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["fruit_id"], name: "index_seasons_on_fruit_id"
