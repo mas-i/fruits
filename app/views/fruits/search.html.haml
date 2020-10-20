@@ -1,8 +1,11 @@
 = search_form_for @search, url: search_fruits_path do |f|
   = f.label :name, "県名又は市名"
   = f.text_field :origins_prefecture_or_origins_city_cont
+  -# = f.label :name, "月を選択してね！"
+  -# = f.check_box :month_eq_any, {multiple: true,}
   = f.number_field :seasons_month_cont
   = f.submit "検索"
+
 
 .card-deck
   - @fruits.each do |fruit|

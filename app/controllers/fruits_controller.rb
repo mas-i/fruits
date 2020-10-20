@@ -7,7 +7,7 @@ class FruitsController < ApplicationController
   def new
     @fruit = Fruit.new
     @origin = @fruit.origins.new
-    @season = @fruit.seasons.new
+    @fruit.seasons.build
   end
 
   def create
@@ -30,6 +30,12 @@ class FruitsController < ApplicationController
   end
 
   def destroy
+    @fruit = Fruit.find(params[:id])
+    if @fruit.destroy.user_id == current_user.id && @item.destroy
+      redirect_to root_path, notice: "削除が完了しました"
+    else
+      render action: :show, alert: "削除が失敗しました"
+    end
   end
 
   def search
